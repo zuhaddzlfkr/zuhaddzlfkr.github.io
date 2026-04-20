@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Analyst Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --sub: #9ca3af;
+      --accent: #3b82f6;
+    }
+
+    .light {
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --text: #111827;
+      --sub: #4b5563;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .hero img {
+      width: 100px;
+      border-radius: 50%;
+    }
+
+    section {
+      margin-top: 40px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .sub {
+      color: var(--sub);
+      font-size: 14px;
+    }
+
+    .skills span {
+      display: inline-block;
+      background: var(--card);
+      padding: 6px 10px;
+      margin: 4px;
+      border-radius: 6px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--sub);
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- NAV -->
+  <nav>
+    <h3>Portfolio</h3>
+    <button onclick="toggleMode()">🌙</button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <img src="profile.jpg">
+    <h1>M. Zuhad Dzulfikar</h1>
+    <p>Data Analyst | Business Intelligence Analyst</p>
+
+    <p>
+      <a href="https://linkedin.com/in/mzuhaddzulfikar/">LinkedIn</a> |
+      <a href="https://github.com/zuhaddzlfkr">GitHub</a>
+    </p>
+  </div>
+
+  <!-- ABOUT -->
+  <section>
+    <h2>Hi, I'm Zuhad!</h2>
+    <p>
+      An Economics graduate turned Data Analyst, passionate about using data to understand behavioral trends and optimize business decisions. 
+      My background in economics allows me to look beyond the numbers and understand the "why" behind the data.
+    </p>
+  </section>
+
+  <!-- EDUCATION -->
+  <section>
+    <h2>Education</h2>
+
+    <div class="card">
+      <h3>Universitas Airlangga - Surabaya, Indonesia</h3>
+      <p class="sub">Bachelor of Economics | 2020 - 2024</p>
+    </div>
+
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section>
+    <h2>EXPERIENCE</h2>
+
+    <div class="card">
+      <h3>Data Analyst - PT. Japfa Comfeed Indonesia (Social Investment Department)</h3>
+      <p class="sub">Aug 2024 - Present</p>
+      <ul>
+        <li>Analyzed and interpreted data sets of JAPFA's CSR programs to identify key insights and trends, providing valuable insights for leader's decision-making</li>
+        <li>Developed and maintained 5+ JAPFA for Kids dashboards (daily - monthly monitoring & overall KPIs) to effectively display data findings to non-technical stakeholders</li>
+        <li>Contributed to the development and improvement of data analytics tools and processes, enhancing data quality, increasing efficiency and accuracy of data analysis for JAPFA's CSR programs</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <h2>SKILL</h2>
+
+    <div class="skills">
+      <span>Hard: Data cleaning & wrangling, Exploratory Data Analysis (EDA), data visualization & dashboard development.</span>
+      <span>Software: Ms. Excel, Python, SQL, Data Studio (Looker Studio), Ms. Power BI.</span>
+      <span>Soft: Attention to detail, analytical thinking, problem solving, communication.</span>
+    </div>
+
+  </section>
+
+  <!-- PROJECT -->
+  <section>
+    <h2>PROJECT</h2>
+
+    <div class="card">
+      <h3>Perempuan Nusantara Dashboard</h3>
+      <p>Dashboard of Organic Waste Processing Achievements by Perempuan Nusantara Communities, Empowered by Japfa, Across 5 Japfa Unit Locations.</p>
+      <a href="https://datastudio.google.com/embed/u/0/reporting/287946ba-01d9-439a-a1a8-a55e14c98899/page/BvbgF">View Detail</a>
+    </div>
+    <h2>Tools</h2>
+<ul>
+  <li>Ms. Excel, Data Studio (Looker Studio)</li>
+
+  </section>
+
+  <footer>
+    © 2026 Dzulfikar, M. Zuhad
+  </footer>
+
+</div>
+
+<script>
+function toggleMode() {
+  document.body.classList.toggle("light");
+}
+</script>
+
+</body>
+</html>
