@@ -3,21 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M. Zuhad Dzulfikar — About Me</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%23b94040'/><text x='50' y='68' font-family='Georgia,serif' font-size='42' font-weight='400' fill='white' text-anchor='middle'>ZD</text></svg>" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
-  <title>M. Zuhad Dzulfikar — About Me</title>
-
   <style>
     :root {
       --header-height: 80px;
-      --serif: 'EB Garamond', 'Calibri', serif;
+      --serif: 'EB Garamond', Georgia, serif;
       --sans:  'DM Sans', sans-serif;
       --ink:   #1a1a18;
       --ink-2: #6b6b67;
-      --ink-3: #b0aea9;
-      --rule:  rgba(0,0,0,0.08);
+      --ink-3: #7e7e7e;
+      --rule:  rgba(0,0,0,0.10);
+      --bg:    #ffffff;
+      --bg-2:  #f7f6f4;
+      --accent:      #b94040;
+      --accent-soft: rgba(185, 64, 64, 0.07);
+    }
+
+    html[data-theme="dark"] {
+      --ink:   #e8e6e1;
+      --ink-2: #9a9892;
+      --ink-3: #6a6a66;
+      --rule:  rgba(255,255,255,0.10);
+      --bg:    #141412;
+      --bg-2:  #1e1d1b;
+      --accent:      #c95555;
+      --accent-soft: rgba(201, 85, 85, 0.10);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,17 +42,11 @@
 
     body {
       font-family: var(--sans);
-      background: #ffffff;
+      background: var(--bg);
       color: var(--ink);
       padding-top: var(--header-height);
       -webkit-font-smoothing: antialiased;
-    }
-
-    .header-sub {
-      font-size: 0.72rem;
-      color: var(--ink-2);
-      margin-top: 2px;
-      font-weight: 300;
+      transition: background 0.35s ease, color 0.35s ease;
     }
 
     /* ─── PAGE TRANSITIONS ─── */
@@ -61,47 +72,52 @@
       position: fixed;
       top: 0; left: 0; width: 100%;
       height: var(--header-height);
-      background: #ffffff;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border-bottom: 0.5px solid var(--rule);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 2.5rem;
       z-index: 999;
+      transition: background 0.35s ease;
     }
+    html[data-theme="dark"] header { background: rgba(20,20,18,0.92); }
 
-    .header-name {
-      font-family: var(--sans);
-      font-weight: 500;
-      font-size: 0.88rem;
-      color: var(--ink);
-      letter-spacing: 0.01em;
-    }
+    .header-name { font-family: var(--sans); font-weight: 500; font-size: 0.9rem; color: var(--ink); letter-spacing: 0.01em; }
+    .header-sub  { font-size: 0.72rem; color: var(--ink-2); margin-top: 2px; font-weight: 300; }
 
-    .site-nav {
+    nav { display: flex; gap: 2rem; align-items: center; }
+    nav a { font-size: 0.8rem; color: var(--ink-2); text-decoration: none; font-weight: 400; letter-spacing: 0.02em; transition: color 0.2s; }
+    nav a:hover { color: var(--ink); }
+    nav a.active { color: var(--accent); font-weight: 500; border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
+
+    /* ─── DARK MODE TOGGLE ─── */
+    .theme-toggle {
       display: flex;
-      gap: 2rem;
       align-items: center;
-    }
-
-    .site-nav a {
-      font-family: var(--sans);
-      font-size: 0.78rem;
+      gap: 0.5rem;
+      cursor: pointer;
+      background: none;
+      border: 0.5px solid var(--rule);
+      border-radius: 40px;
+      padding: 0.3rem 0.75rem 0.3rem 0.55rem;
       color: var(--ink-2);
-      text-decoration: none;
-      font-weight: 400;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 300;
       letter-spacing: 0.02em;
-      transition: color 0.18s;
+      transition: border-color 0.2s, color 0.2s;
+      white-space: nowrap;
     }
-
-    .site-nav a:hover { color: var(--ink); }
-
-    .site-nav a.active {
-      color: var(--ink);
-      font-weight: 500;
-      border-bottom: 1px solid var(--ink);
-      padding-bottom: 1px;
-    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .theme-toggle .toggle-icon { font-size: 0.85rem; transition: transform 0.4s ease; display: inline-block; }
+    html[data-theme="dark"] .theme-toggle .toggle-icon { transform: rotate(180deg); }
+    .toggle-label-light { display: inline; }
+    .toggle-label-dark  { display: none; }
+    html[data-theme="dark"] .toggle-label-light { display: none; }
+    html[data-theme="dark"] .toggle-label-dark  { display: inline; }
 
     /* ─── PAGE WRAPPER ─── */
     .page {
@@ -110,20 +126,8 @@
       padding: 7rem 2.5rem 6rem;
     }
 
-    /* ─── HERO HEADING ─── */
-    .hero {
-      margin-bottom: 4rem;
-    }
-
-    .eyebrow {
-      font-family: var(--sans);
-      font-size: 0.62rem;
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 1.6rem;
-    }
+    /* ─── HERO ─── */
+    .hero { margin-bottom: 4rem; }
 
     h1 {
       font-family: var(--serif);
@@ -132,14 +136,9 @@
       line-height: 1.02;
       color: var(--ink);
     }
-
-    h1 em {
-      font-style: italic;
-      color: var(--ink-2);
-    }
+    h1 em { font-style: italic; color: var(--accent); }
 
     /* ─── SECTION ROWS ─── */
-    /* Each row: left label + right text, separated by a top rule */
     .section-row {
       display: grid;
       grid-template-columns: 200px 1fr;
@@ -148,24 +147,18 @@
       border-top: 0.5px solid var(--rule);
       align-items: start;
     }
+    .section-row:last-of-type { border-bottom: 0.5px solid var(--rule); }
 
-    .section-row:last-of-type {
-      border-bottom: 0.5px solid var(--rule);
-    }
-
-    /* ─── LEFT: SUBHEADING ─── */
     h2 {
       font-family: var(--serif);
       font-size: 1.3rem;
       font-weight: 400;
       line-height: 1.2;
       color: var(--ink);
-      padding-top: 0.15rem; /* optical alignment with first line of text */
+      padding-top: 0.15rem;
     }
+    h2 em { font-style: italic; color: var(--accent); }
 
-    h2 em { font-style: italic; }
-
-    /* ─── RIGHT: BODY TEXT ─── */
     .section-body p {
       font-family: var(--sans);
       font-size: 0.875rem;
@@ -173,133 +166,114 @@
       line-height: 1.95;
       color: var(--ink-2);
     }
+    .section-body p + p { margin-top: 1.2rem; }
+    .section-body em { color: var(--ink); font-style: italic; }
 
-    .section-body p + p {
-      margin-top: 1.2rem;
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 2rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      border-top: 0.5px solid var(--rule);
+      margin-top: 0;
     }
-
-    /* ─── FOOTER STRIP ─── */
-    .footer-strip {
-      margin-top: 5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-
-    .contact-eyebrow {
-      font-family: var(--sans);
-      font-size: 0.62rem;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 0.55rem;
-    }
-
-    .contact-link {
-      font-family: var(--serif);
-      font-size: 1.6rem;
-      font-weight: 400;
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 0.5px solid var(--rule);
-      padding-bottom: 3px;
-      transition: border-color 0.2s;
-      display: inline-block;
-    }
-
-    .contact-link:hover { border-color: var(--ink); }
-
-    .social {
-      font-family: var(--sans);
-      font-size: 0.75rem;
-      font-weight: 300;
-      color: var(--ink-3);
-      margin-top: 0.5rem;
-    }
+    .footer-contact { font-size: 0.72rem; color: var(--ink-3); font-weight: 300; }
+    .footer-fun     { font-size: 0.72rem; color: var(--ink-3); font-weight: 300; text-align: center; font-style: italic; }
+    .footer-copy    { font-size: 0.72rem; color: var(--ink-3); font-weight: 300; text-align: right; }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 680px) {
       header { padding: 0 1.2rem; }
-      .site-nav { gap: 1.2rem; }
+      nav { gap: 1rem; }
       .page { padding: 5rem 1.2rem 4rem; }
-      .section-row {
-        grid-template-columns: 1fr;
-        gap: 0.8rem;
-        padding: 2rem 0;
-      }
-      .footer-strip { flex-direction: column; gap: 2rem; align-items: flex-start; }
+      .section-row { grid-template-columns: 1fr; gap: 0.8rem; padding: 2rem 0; }
+      footer { grid-template-columns: 1fr; gap: 0.4rem; padding: 1.5rem 1.2rem; }
+      .footer-fun, .footer-copy { text-align: left; }
     }
   </style>
 </head>
 <body>
 
+  <!-- ─── HEADER ─── -->
   <header>
     <div>
       <div class="header-name">M. Zuhad Dzulfikar</div>
-      <div class="header-sub">About</div>
+      <div class="header-sub">About Me</div>
     </div>
-    <nav class="site-nav">
-
-            <a href="index.html">Portfolio</a>
-            <a href="about.html" class="active">About Me</a>
+    <nav>
+      <a href="index.html">My Portfolio</a>
+      <a href="about.html" class="active">About Me</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="toggle-icon">☀︎</span>
+        <span class="toggle-label-light">Light</span>
+        <span class="toggle-label-dark">Dark</span>
+      </button>
     </nav>
   </header>
 
+  <!-- ─── MAIN ─── -->
   <main class="page">
 
-    <!-- Hero -->
     <div class="hero">
-      <!-- <div class="eyebrow">About</div> -->
       <h1>About<br><em>Me.</em></h1>
     </div>
 
-    <!-- Row 1 -->
     <div class="section-row">
       <h2>My Background</h2>
       <div class="section-body">
         <p>
-          I’m a graduate of Economics from Universitas Airlangga, building my career in the field of data analysis. 
-          I’m deeply passionate about turning data into insights—where analytical thinking meets practical problem-solving, 
+          I'm a graduate of Economics from Universitas Airlangga, building my career in the field of data analysis.
+          I'm deeply passionate about turning data into insights — where analytical thinking meets practical problem-solving,
           both requiring a strong attention to detail.
         </p>
       </div>
     </div>
 
-    <!-- Row 2 -->
     <div class="section-row">
       <h2>My Passion</h2>
       <div class="section-body">
         <p>
-          I’ve always been curious about what drives outcomes—<em>why</em> certain trends happen, what influences decisions, 
-          and how data can reveal patterns that aren’t immediately obvious. That curiosity led me to study economics, 
+          I've always been curious about what drives outcomes — <em>why</em> certain trends happen, what influences decisions,
+          and how data can reveal patterns that aren't immediately obvious. That curiosity led me to study economics,
           where I developed a strong analytical mindset and learned to approach problems through a data-driven lens.
         </p>
         <p>
-          Over time, I found myself drawn deeper into working with data—cleaning it, exploring it, 
-          and turning it into insights that actually matter. That’s what led me to pursue a career in data analysis. 
-          My journey wasn’t strictly linear, but each step helped shape how I think: structured, curious, 
+          Over time, I found myself drawn deeper into working with data — cleaning it, exploring it,
+          and turning it into insights that actually matter. That's what led me to pursue a career in data analysis.
+          My journey wasn't strictly linear, but each step helped shape how I think: structured, curious,
           and always looking for the story behind the numbers.
         </p>
       </div>
     </div>
-    
 
-    <!-- Footer strip 
-    <div class="footer-strip">
-      <div>
-        <div class="contact-eyebrow">Get in touch</div>
-        <a href="mailto:dzulfikarzuhad@gmail.com" class="contact-link">
-          dzulfikarzuhad@gmail.com
-        </a>
-        <div class="social">@dzulfikarzuhad</div>
-      </div>
-    </div>
-    -->
   </main>
 
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-contact">dzulfikarzuhad@gmail.com</div>
+    <div class="footer-fun">Vibe-coded by Zuhad with Vanilla CSS</div>
+    <div class="footer-copy">© 2026 M. Zuhad Dzulfikar</div>
+  </footer>
+
   <script>
-    document.querySelectorAll('.site-nav a').forEach(function(link) {
+    /* ── Dark mode toggle ── */
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+
+    document.getElementById('themeToggle').addEventListener('click', function() {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+
+    /* ── Page transition ── */
+    document.querySelectorAll('nav a').forEach(function(link) {
       link.addEventListener('click', function(e) {
         var href = this.getAttribute('href');
         if (!href || href === '#') return;
