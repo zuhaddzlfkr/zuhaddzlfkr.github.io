@@ -127,7 +127,13 @@
     }
 
     /* ─── HERO ─── */
-    .hero { margin-bottom: 4rem; }
+    .hero {
+      margin-bottom: 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: end;
+    }
 
     h1 {
       font-family: var(--serif);
@@ -137,6 +143,35 @@
       color: var(--ink);
     }
     h1 em { font-style: italic; color: var(--accent); }
+
+    .hero-meta {
+      padding-bottom: 0.4rem;
+    }
+    .hero-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--ink-2);
+      line-height: 1.65;
+      border-left: 2px solid var(--accent);
+      padding-left: 1.2rem;
+    }
+    .hero-quote cite {
+      display: block;
+      margin-top: 0.9rem;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 680px) {
+      .hero { grid-template-columns: 1fr; gap: 2rem; }
+    }
 
     /* ─── SECTION ROWS ─── */
     .section-row {
@@ -168,6 +203,24 @@
     }
     .section-body p + p { margin-top: 1.2rem; }
     .section-body em { color: var(--ink); font-style: italic; }
+
+    /* ─── LEARNING PILLS ─── */
+    .learning-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .learning-pill {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      border: 0.5px solid var(--accent);
+      border-radius: 40px;
+      padding: 0.25rem 0.8rem;
+      background: var(--accent-soft);
+    }
 
     /* ─── FOOTER ─── */
     footer {
@@ -203,7 +256,7 @@
     </div>
     <nav>
       <a href="index.html">My Portfolio</a>
-      <a href="about.html" class="active">About Me</a>
+      <a href="about me.html" class="active">About Me</a>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <span class="toggle-icon">☀︎</span>
         <span class="toggle-label-light">Light</span>
@@ -216,7 +269,15 @@
   <main class="page">
 
     <div class="hero">
-      <h1>About<br><em>Me.</em></h1>
+      <div>
+        <h1>About<br><em>Me.</em></h1>
+      </div>
+      <div class="hero-meta">
+        <blockquote class="hero-quote">
+          &ldquo;The goal is to turn data into information,<br>and information into insight.&rdquo;
+          <cite>— Carly Fiorina</cite>
+        </blockquote>
+      </div>
     </div>
 
     <div class="section-row">
@@ -243,6 +304,41 @@
           and turning it into insights that actually matter. That's what led me to pursue a career in data analysis.
           My journey wasn't strictly linear, but each step helped shape how I think: structured, curious,
           and always looking for the story behind the numbers.
+        </p>
+      </div>
+    </div>
+
+    <div class="section-row">
+      <h2>What I'm<br><em>Learning</em></h2>
+      <div class="section-body">
+        <div class="learning-grid">
+          <span class="learning-pill">Python for Data Analysis</span>
+          <span class="learning-pill">Statistical Modeling</span>
+          <span class="learning-pill">Power BI</span>
+          <span class="learning-pill">Data Storytelling</span>
+        </div>
+        <p>
+          I believe that good data work is never really finished — there's always a better method, a cleaner pipeline,
+          or a more compelling way to communicate findings. Right now I'm deepening my Python skills for more advanced data wrangling
+          and exploring statistical modeling to go beyond descriptive analysis. I'm also working on improving how I present
+          data visually, because the best insight means nothing if it isn't communicated clearly.
+        </p>
+      </div>
+    </div>
+
+    <div class="section-row">
+      <h2>Goals &amp;<br><em>Aspirations</em></h2>
+      <div class="section-body">
+        <p>
+          In the near term, I want to grow into a well-rounded data analyst who can handle the full pipeline —
+          from raw, messy data all the way to clear, decision-ready insights. I'm especially interested in
+          the intersection of data and social impact, where numbers can drive meaningful change in people's lives,
+          not just business metrics.
+        </p>
+        <p>
+          Longer term, I aspire to take on roles that involve more complex analytical challenges — whether that means
+          moving into data science, building my own analytical frameworks, or contributing to work that genuinely
+          matters at scale. Whatever the path, I want to keep asking better questions and telling clearer stories with data.
         </p>
       </div>
     </div>
