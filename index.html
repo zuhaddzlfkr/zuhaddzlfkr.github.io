@@ -74,6 +74,9 @@
     .w3-slide{display:none;position:relative}
     .w3-slide.active{display:block}
     .w3-slide img{width:100%;height:auto;object-fit:contain;display:block;border:none;transition:transform 0.5s ease;max-height:520px}
+    /* JFK slideshow: fixed height so both portrait & landscape images display fully */
+    .slideshow-jfk .w3-slide.active{display:flex;align-items:center;justify-content:center;height:500px;background:var(--bg-2)}
+    .slideshow-jfk .w3-slide img{width:auto;height:100%;max-width:100%;max-height:500px;object-fit:contain}
     .w3-prev,.w3-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.88);border:none;color:var(--ink);font-size:1rem;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity 0.2s;z-index:2}
     html[data-theme="dark"] .w3-prev,html[data-theme="dark"] .w3-next{background:rgba(30,29,27,0.88)}
     .slideshow-wrap:hover .w3-prev,.slideshow-wrap:hover .w3-next{opacity:1}
@@ -185,7 +188,7 @@
         </div>
         <div class="tl-item">
           <div class="tl-year">August 2024</div>
-          <div class="tl-text">Graduated with a Bachelor's degree in Economics, earning a Magna Cum Laude (High Honors) distinction (GPA: 3.81).</div>
+          <div class="tl-text">Graduated with a Bachelor's degree in Economics.</div>
         </div>
         <div class="tl-item">
           <div class="tl-year">August 2024 &ndash; Present</div>
@@ -234,13 +237,10 @@
       <div class="skill-col-label" style="color:var(--accent);font-weight:500;">Software</div>
       <div class="tags">
         <span class="tag">Microsoft Excel</span>
-        <span class="tag">Google Sheets</span>
-        <span class="tag">Stata</span>
-        <span class="tag">Python Programming Language for Data Analysis</span>
-        <span class="tag">SQL (Structured Query Language)</span>
-        <span class="tag">Data Studio (formerly Looker Studio)</span>
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Looker Studio</span>
         <span class="tag">Microsoft Power BI</span>
-        <span class="tag">Tableau</span>
       </div>
     </div>
     <div class="skill-col">
@@ -259,16 +259,16 @@
     <div class="section-rule"></div>
   </div>
 
- <!-- Work Showcase 1 -->
+  <!-- Work Showcase 1 -->
   <article class="featured">
     <div class="feat-visual">
       <span class="feat-badge">Work Showcase</span>
-      <div class="slideshow-wrap">
+      <div class="slideshow-wrap slideshow-jfk">
         <div class="w3-slide active">
           <img src="Images/JFK-1.jpg" alt="JAPFA for Kids Overview" />
         </div>
         <div class="w3-slide">
-          <img src="Images/JFK-2.jpg" alt="JAPFA for Kids desc" />
+          <img src="Images/JFK-2.jpg" alt="JAPFA for Kids Detail" />
         </div>
         <button class="w3-prev" onclick="plusSlides(this,-1)" aria-label="Previous slide">&#10094;</button>
         <button class="w3-next" onclick="plusSlides(this,1)" aria-label="Next slide">&#10095;</button>
@@ -279,7 +279,7 @@
       <div>
         <h2 class="feat-title">JAPFA for Kids Program Dashboard</h2>
         <p class="feat-desc">
-          Initiated in 2008, JAPFA for Kids is a long-running social investment program aimed at improving children’s health 
+          Initiated in 2008, JAPFA for Kids is a long-running social investment program aimed at improving children's health 
           and nutritional outcomes through integrated school-based interventions. 
           The program has scaled significantly, reaching 29 provinces, 109 regencies/cities, and over 224,000 students. 
           Since 2022, the program has adopted a more targeted approach to address malnutrition, 
@@ -298,7 +298,7 @@
             with 45%–78% of malnourished students successfully transitioning to well-nourished status annually since 2022. 
             This is further supported by a consistent decline in endline malnutrition figures each year. 
             The scale of impact is amplified through the engagement of more than 220,000 students, 
-            highlighting the program’s effectiveness in delivering sustainable, large-scale social impact.</div>
+            highlighting the program's effectiveness in delivering sustainable, large-scale social impact.</div>
         </div>
       </div>
       <div class="feat-tags tags">
